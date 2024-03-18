@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagem Selecionada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .container {
+            margin: 20px;
+            text-align: center;
+        }
+        .frame {
+            position: relative;
+            border: 10px solid #f7cac9; /* Rosa claro */
+            padding: 20px;
+            border-radius: 20px;
+            background-color: #fff;
+            display: inline-block;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: bounceIn 1s;
+        }
+        .frame img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 20px;
+            animation: fadeIn 1s;
+        }
+        .title {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #f09998; /* Rosa claro */
+        }
+        .heart {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23f09998" stroke="%23f09998" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"%3E%3C/path%3E%3C/svg%3E');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .heart.top-left {
+            top: 10px;
+            left: 10px;
+        }
+        .heart.bottom-right {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="frame">
+        <img id="selected-image" src="#" alt="Imagem selecionada">
+        <div class="title">Amo-te</div>
+        <div class="heart top-left"></div>
+        <div class="heart bottom-right"></div>
+    </div>
+</div>
+
+<script>
+    var selectedImage = sessionStorage.getItem('selectedImage');
+    if (selectedImage) {
+        document.getElementById('selected-image').src = selectedImage;
+    } else {
+        // Caso não haja imagem armazenada, redireciona de volta para a página inicial
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>

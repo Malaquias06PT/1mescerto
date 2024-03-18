@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecionar Imagem</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe6ff; /* Rosa claro */
+            color: #333;
+        }
+        header {
+            background-color: #ffccff; /* Rosa mais escuro */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid #ff99ff; /* Coração */
+        }
+        .container {
+            margin: 20px auto;
+            width: 70%;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding: 20px;
+        }
+        .content {
+            text-align: justify;
+            line-height: 1.6;
+        }
+        footer {
+            background-color: #ffccff; /* Rosa mais escuro */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        #image-input {
+            display: none;
+        }
+        #image-preview {
+            border: 2px dashed #ff99ff; /* Coração */
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+        #image-preview img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 20px;
+        }
+        .heart {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff99ff" stroke="%23ff99ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"%3E%3C/path%3E%3C/svg%3E');
+            animation: heartBeat 1s infinite;
+        }
+        @keyframes heartBeat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Um Mês de Namoro!</h1>
+</header>
+
+<div class="container">
+    <div class="content">
+        <p>Miss Vrum Vrum</p>
+        <p>Já lá vai um mês hehe.</p>
+        <p>Um mês de tudo que sempre quis. Uma mulher que me dá amor e carinho e que esteja sempre ao meu lado.</p>
+        <p>Amo-te muito e mal posso esperar para fazer dois meses, três meses, um ano de namoro.</p>
+        <p>Acho que temos uma conexão muito forte, e quero ainda a deixar mais forte. Quero criar infinitas memórias ao teu lado contigo e com os nossos filhos.</p>
+        <p>Tento ser o meu melhor e sei que por vezes erro, e desculpa por isso, mas nunca com intenção de magoar, és a pessoa mais importante pra mim e o amor que sinto por ti é maior que o infinito.</p>
+        <p>Amo-te Daniela, com tudo o que tenho e o que não tenho.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+        <div id="image-preview" onclick="document.getElementById('image-input').click();">
+            <div class="heart"></div>
+            <p>Mete uma foto nossa que gostes aqui <3</p>
+            <img id="selected-image" src="#" alt="Imagem selecionada" style="display: none;">
+        </div>
+        <input type="file" id="image-input" accept="image/*" onchange="previewImage(event);">
+    </div>
+</div>
+
+<script>
+    function previewImage(event) {
+        var selectedImage = document.getElementById('selected-image');
+        selectedImage.style.display = 'block';
+        selectedImage.src = URL.createObjectURL(event.target.files[0]);
+        sessionStorage.setItem('selectedImage', selectedImage.src);
+        window.location.href = "imagem.html";
+    }
+</script>
+
+</body>
+</html>
